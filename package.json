@@ -1,0 +1,51 @@
+{
+  "name": "dev-server",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-session": "^1.18.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.1.0",
+    "@types/passport": "^1.0.17",
+    "@types/passport-github2": "^1.2.9",
+    "@types/jest": "^29.5.0",
+    "@types/supertest": "^2.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "supertest": "^6.3.0"
+  },
+  "dependencies": {
+    "@devcollab/schemas": "file:src/schemas",
+    "@types/nodemailer": "^6.4.17",
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.5",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^7.0.5",
+    "zod": "^4.0.10"
+  }
+}

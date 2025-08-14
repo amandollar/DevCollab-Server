@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const comment_controller_1 = require("../controllers/comment.controller");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const validation_middleware_1 = require("../middleware/validation.middleware");
+const comments_schema_1 = require("../schemas/comments.schema");
+const commentRouter = (0, express_1.Router)();
+commentRouter.post("/", auth_middleware_1.authenticateToken, (0, validation_middleware_1.validateSchema)(comments_schema_1.createCommentSchema), comment_controller_1.createComment);
+commentRouter.put("/:id", auth_middleware_1.authenticateToken, (0, validation_middleware_1.validateSchema)(comments_schema_1.updateCommentSchema), comment_controller_1.updateComment);
+commentRouter.delete("/:id", auth_middleware_1.authenticateToken, (0, validation_middleware_1.validateSchema)(comments_schema_1.deleteCommentSchema), comment_controller_1.deleteComment);
+commentRouter.get("/task/:taskId", auth_middleware_1.authenticateToken, comment_controller_1.getCommentsByTask);
+exports.default = commentRouter;

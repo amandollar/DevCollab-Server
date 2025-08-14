@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_routes_1 = __importDefault(require("../routes/auth.routes"));
+const collaboration_routes_1 = __importDefault(require("../routes/collaboration.routes"));
+const project_routes_1 = __importDefault(require("../routes/project.routes"));
+const task_routes_1 = __importDefault(require("../routes/task.routes"));
+const comment_routes_1 = __importDefault(require("./comment.routes"));
+const notification_routes_1 = __importDefault(require("./notification.routes"));
+const indexRouter = (0, express_1.Router)();
+indexRouter.use('/auth', auth_routes_1.default);
+indexRouter.use('/collaboration', collaboration_routes_1.default);
+indexRouter.use('/project', project_routes_1.default);
+indexRouter.use('/task', task_routes_1.default);
+indexRouter.use('/comment', comment_routes_1.default);
+indexRouter.use('/notification', notification_routes_1.default);
+exports.default = indexRouter;

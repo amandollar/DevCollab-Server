@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const collaborationRequest_controller_1 = require("../controllers/collaborationRequest.controller");
+const collaborationRequest_schema_1 = require("../schemas/collaborationRequest.schema");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const validation_middleware_1 = require("../middleware/validation.middleware");
+const collaborationRouter = (0, express_1.Router)();
+collaborationRouter.post("/send", auth_middleware_1.authenticateToken, (0, validation_middleware_1.validateSchema)(collaborationRequest_schema_1.createCollaborationRequestSchema), collaborationRequest_controller_1.sendRequest);
+collaborationRouter.patch("/:id/accept", auth_middleware_1.authenticateToken, collaborationRequest_controller_1.acceptRequest);
+collaborationRouter.patch("/:id/reject", auth_middleware_1.authenticateToken, collaborationRequest_controller_1.rejectRequest);
+collaborationRouter.patch("/pending/:userId", collaborationRequest_controller_1.getPendingUserRequestForUser);
+exports.default = collaborationRouter;

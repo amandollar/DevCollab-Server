@@ -1,23 +1,33 @@
-import { Router } from "express";
-import authRouter from '../routes/auth.routes'
-import collaborationRouter from '../routes/collaboration.routes';
-import projectRouter from '../routes/project.routes';
-import taskRouter from '../routes/task.routes';
-import commentRouter from "./comment.routes";
-import notificationRouter from "./notification.routes";
-import chatRouter from "./chat.routes";
-import discussionRouter from "./discussion.routes";
+import express from 'express'
+import authRoutes from './auth.routes'
+import projectRoutes from './project.routes'
+import taskRoutes from './task.routes'
+import discussionRoutes from './discussion.routes'
+import commentRoutes from './comment.routes'
+import collaborationRoutes from './collaboration.routes'
+import chatRoutes from './chat.routes'
+import notificationRoutes from './notification.routes'
 
+const router = express.Router()
 
-const indexRouter = Router();
+// Health check endpoint for frontend wake-up calls
+router.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    message: 'DevCollab Backend is running!',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  })
+})
 
-indexRouter.use('/auth', authRouter);
-indexRouter.use('/collaboration', collaborationRouter);
-indexRouter.use('/project', projectRouter);
-indexRouter.use('/task', taskRouter);
-indexRouter.use('/comment', commentRouter);
-indexRouter.use('/notification', notificationRouter);
-indexRouter.use('/chat',chatRouter);
-indexRouter.use('/discussion', discussionRouter);
+// API routes
+router.use('/auth', authRoutes)
+router.use('/projects', projectRoutes)
+router.use('/tasks', taskRoutes)
+router.use('/discussions', discussionRoutes)
+router.use('/comments', commentRoutes)
+router.use('/collaborations', collaborationRoutes)
+router.use('/chat', chatRoutes)
+router.use('/notifications', notificationRoutes)
 
-export default indexRouter;
+export default router

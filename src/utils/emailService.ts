@@ -136,7 +136,7 @@ export const sendVerificationEmail = async (
   try {
     const transporter = createTransporter()
     
-    const verificationUrl = `${process.env.FRONTEND_URL}/verify-email/${verificationToken}`
+    const verificationUrl = `${process.env.FRONTEND_URL}/auth/verify-email/${verificationToken}`
     
     const mailOptions = {
       from: `"DevCollab" <${process.env.EMAIL_USER}>`,

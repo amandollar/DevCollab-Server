@@ -40,7 +40,7 @@ UserSchema.pre("findOneAndDelete", async function (next) {
   await Project.deleteMany({ owner: userId });
   await Notification.deleteMany({ user: userId });
   await Comments.deleteMany({ user: userId });
-
+ 
   next();
 });
 export default mongoose.model<IUser>("User", UserSchema);
